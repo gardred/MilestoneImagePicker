@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E8653CF8C439CC0EC4D9C6E /* Pods_MilestoneImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3CD0E9B062204AC30964F59 /* Pods_MilestoneImagePicker.framework */; };
+		F18DEF2728643CAF00C11D5F /* HexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18DEF2628643CAF00C11D5F /* HexColor.swift */; };
+		F18DEF2928643D4200C11D5F /* IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18DEF2828643D4200C11D5F /* IBInspectable.swift */; };
+		F18DEF2D2864408900C11D5F /* MainCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18DEF2B2864408900C11D5F /* MainCVC.swift */; };
+		F18DEF2E2864408900C11D5F /* MainCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F18DEF2C2864408900C11D5F /* MainCVC.xib */; };
 		F1E8875D28635A1E00ED8584 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E8875C28635A1E00ED8584 /* AppDelegate.swift */; };
 		F1E8875F28635A1E00ED8584 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E8875E28635A1E00ED8584 /* SceneDelegate.swift */; };
 		F1E8876128635A1E00ED8584 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E8876028635A1E00ED8584 /* ViewController.swift */; };
@@ -16,6 +21,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4BAEB1C3103386351EBC04FE /* Pods-MilestoneImagePicker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MilestoneImagePicker.release.xcconfig"; path = "Target Support Files/Pods-MilestoneImagePicker/Pods-MilestoneImagePicker.release.xcconfig"; sourceTree = "<group>"; };
+		C860A1CCB0A3C6C62BEE59E8 /* Pods-MilestoneImagePicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MilestoneImagePicker.debug.xcconfig"; path = "Target Support Files/Pods-MilestoneImagePicker/Pods-MilestoneImagePicker.debug.xcconfig"; sourceTree = "<group>"; };
+		F18DEF1C28643BBB00C11D5F /* SFPRODISPLAYSEMIBOLDITALIC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYSEMIBOLDITALIC.OTF; sourceTree = "<group>"; };
+		F18DEF1D28643BBC00C11D5F /* SFPRODISPLAYBOLD.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYBOLD.OTF; sourceTree = "<group>"; };
+		F18DEF1E28643BBC00C11D5F /* SFPRODISPLAYULTRALIGHTITALIC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYULTRALIGHTITALIC.OTF; sourceTree = "<group>"; };
+		F18DEF1F28643BBC00C11D5F /* SFPRODISPLAYMEDIUM.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYMEDIUM.OTF; sourceTree = "<group>"; };
+		F18DEF2028643BBC00C11D5F /* SFPRODISPLAYHEAVYITALIC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYHEAVYITALIC.OTF; sourceTree = "<group>"; };
+		F18DEF2128643BBC00C11D5F /* SFPRODISPLAYBLACKITALIC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYBLACKITALIC.OTF; sourceTree = "<group>"; };
+		F18DEF2228643BBD00C11D5F /* SFPRODISPLAYREGULAR.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYREGULAR.OTF; sourceTree = "<group>"; };
+		F18DEF2328643BBD00C11D5F /* SFPRODISPLAYLIGHTITALIC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYLIGHTITALIC.OTF; sourceTree = "<group>"; };
+		F18DEF2428643BBD00C11D5F /* SFPRODISPLAYTHINITALIC.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYTHINITALIC.OTF; sourceTree = "<group>"; };
+		F18DEF2628643CAF00C11D5F /* HexColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexColor.swift; sourceTree = "<group>"; };
+		F18DEF2828643D4200C11D5F /* IBInspectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBInspectable.swift; sourceTree = "<group>"; };
+		F18DEF2B2864408900C11D5F /* MainCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCVC.swift; sourceTree = "<group>"; };
+		F18DEF2C2864408900C11D5F /* MainCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCVC.xib; sourceTree = "<group>"; };
 		F1E8875928635A1E00ED8584 /* MilestoneImagePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MilestoneImagePicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1E8875C28635A1E00ED8584 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1E8875E28635A1E00ED8584 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +44,7 @@
 		F1E8876528635A2000ED8584 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F1E8876828635A2000ED8584 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F1E8876A28635A2000ED8584 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3CD0E9B062204AC30964F59 /* Pods_MilestoneImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MilestoneImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +52,81 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E8653CF8C439CC0EC4D9C6E /* Pods_MilestoneImagePicker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		38B584095606AD0991918BFE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C860A1CCB0A3C6C62BEE59E8 /* Pods-MilestoneImagePicker.debug.xcconfig */,
+				4BAEB1C3103386351EBC04FE /* Pods-MilestoneImagePicker.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		7B3CC767AE9C93AF174A5F84 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F3CD0E9B062204AC30964F59 /* Pods_MilestoneImagePicker.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F18DEF1A28643BA300C11D5F /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				F18DEF2A2864405B00C11D5F /* Cell */,
+				F1E8876028635A1E00ED8584 /* ViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		F18DEF1B28643BAA00C11D5F /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F18DEF2128643BBC00C11D5F /* SFPRODISPLAYBLACKITALIC.OTF */,
+				F18DEF1D28643BBC00C11D5F /* SFPRODISPLAYBOLD.OTF */,
+				F18DEF2028643BBC00C11D5F /* SFPRODISPLAYHEAVYITALIC.OTF */,
+				F18DEF2328643BBD00C11D5F /* SFPRODISPLAYLIGHTITALIC.OTF */,
+				F18DEF1F28643BBC00C11D5F /* SFPRODISPLAYMEDIUM.OTF */,
+				F18DEF2228643BBD00C11D5F /* SFPRODISPLAYREGULAR.OTF */,
+				F18DEF1C28643BBB00C11D5F /* SFPRODISPLAYSEMIBOLDITALIC.OTF */,
+				F18DEF2428643BBD00C11D5F /* SFPRODISPLAYTHINITALIC.OTF */,
+				F18DEF1E28643BBC00C11D5F /* SFPRODISPLAYULTRALIGHTITALIC.OTF */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		F18DEF2528643CA200C11D5F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F18DEF2628643CAF00C11D5F /* HexColor.swift */,
+				F18DEF2828643D4200C11D5F /* IBInspectable.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F18DEF2A2864405B00C11D5F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				F18DEF2B2864408900C11D5F /* MainCVC.swift */,
+				F18DEF2C2864408900C11D5F /* MainCVC.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		F1E8875028635A1D00ED8584 = {
 			isa = PBXGroup;
 			children = (
 				F1E8875B28635A1E00ED8584 /* MilestoneImagePicker */,
 				F1E8875A28635A1E00ED8584 /* Products */,
+				38B584095606AD0991918BFE /* Pods */,
+				7B3CC767AE9C93AF174A5F84 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,9 +141,11 @@
 		F1E8875B28635A1E00ED8584 /* MilestoneImagePicker */ = {
 			isa = PBXGroup;
 			children = (
+				F18DEF2528643CA200C11D5F /* Extensions */,
+				F18DEF1B28643BAA00C11D5F /* Fonts */,
+				F18DEF1A28643BA300C11D5F /* Main */,
 				F1E8875C28635A1E00ED8584 /* AppDelegate.swift */,
 				F1E8875E28635A1E00ED8584 /* SceneDelegate.swift */,
-				F1E8876028635A1E00ED8584 /* ViewController.swift */,
 				F1E8876228635A1E00ED8584 /* Main.storyboard */,
 				F1E8876528635A2000ED8584 /* Assets.xcassets */,
 				F1E8876728635A2000ED8584 /* LaunchScreen.storyboard */,
@@ -74,9 +161,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F1E8876D28635A2000ED8584 /* Build configuration list for PBXNativeTarget "MilestoneImagePicker" */;
 			buildPhases = (
+				749AB4F181D16470241863C4 /* [CP] Check Pods Manifest.lock */,
 				F1E8875528635A1D00ED8584 /* Sources */,
 				F1E8875628635A1D00ED8584 /* Frameworks */,
 				F1E8875728635A1D00ED8584 /* Resources */,
+				DD9F7B0D8ECD84515041121D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -126,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1E8876928635A2000ED8584 /* LaunchScreen.storyboard in Resources */,
+				F18DEF2E2864408900C11D5F /* MainCVC.xib in Resources */,
 				F1E8876628635A2000ED8584 /* Assets.xcassets in Resources */,
 				F1E8876428635A1E00ED8584 /* Main.storyboard in Resources */,
 			);
@@ -133,12 +223,57 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		749AB4F181D16470241863C4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MilestoneImagePicker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DD9F7B0D8ECD84515041121D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MilestoneImagePicker/Pods-MilestoneImagePicker-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MilestoneImagePicker/Pods-MilestoneImagePicker-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MilestoneImagePicker/Pods-MilestoneImagePicker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F1E8875528635A1D00ED8584 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				F1E8876128635A1E00ED8584 /* ViewController.swift in Sources */,
+				F18DEF2D2864408900C11D5F /* MainCVC.swift in Sources */,
+				F18DEF2928643D4200C11D5F /* IBInspectable.swift in Sources */,
+				F18DEF2728643CAF00C11D5F /* HexColor.swift in Sources */,
 				F1E8875D28635A1E00ED8584 /* AppDelegate.swift in Sources */,
 				F1E8875F28635A1E00ED8584 /* SceneDelegate.swift in Sources */,
 			);
@@ -282,6 +417,7 @@
 		};
 		F1E8876E28635A2000ED8584 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C860A1CCB0A3C6C62BEE59E8 /* Pods-MilestoneImagePicker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -310,6 +446,7 @@
 		};
 		F1E8876F28635A2000ED8584 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4BAEB1C3103386351EBC04FE /* Pods-MilestoneImagePicker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

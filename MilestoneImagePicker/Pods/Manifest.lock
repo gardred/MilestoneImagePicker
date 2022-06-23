@@ -1,0 +1,16 @@
+PODS:
+  - M13Checkbox (3.4.0)
+
+DEPENDENCIES:
+  - M13Checkbox
+
+SPEC REPOS:
+  trunk:
+    - M13Checkbox
+
+SPEC CHECKSUMS:
+  M13Checkbox: 6f59404540ac98ba83a3d1afac335895a40c6a5d
+
+PODFILE CHECKSUM: 0519adebde9e43e6dd3f05b7efaeea69adc765b2
+
+COCOAPODS: 1.11.3
