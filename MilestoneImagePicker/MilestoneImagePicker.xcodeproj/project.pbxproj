@@ -12,12 +12,14 @@
 		F18DEF2928643D4200C11D5F /* IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18DEF2828643D4200C11D5F /* IBInspectable.swift */; };
 		F18DEF2D2864408900C11D5F /* MainCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18DEF2B2864408900C11D5F /* MainCVC.swift */; };
 		F18DEF2E2864408900C11D5F /* MainCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F18DEF2C2864408900C11D5F /* MainCVC.xib */; };
+		F18DEF31286464E900C11D5F /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18DEF30286464E900C11D5F /* FiltersViewController.swift */; };
 		F1E8875D28635A1E00ED8584 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E8875C28635A1E00ED8584 /* AppDelegate.swift */; };
 		F1E8875F28635A1E00ED8584 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E8875E28635A1E00ED8584 /* SceneDelegate.swift */; };
 		F1E8876128635A1E00ED8584 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E8876028635A1E00ED8584 /* ViewController.swift */; };
 		F1E8876428635A1E00ED8584 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1E8876228635A1E00ED8584 /* Main.storyboard */; };
 		F1E8876628635A2000ED8584 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1E8876528635A2000ED8584 /* Assets.xcassets */; };
 		F1E8876928635A2000ED8584 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1E8876728635A2000ED8584 /* LaunchScreen.storyboard */; };
+		F1FBA21928648F9C0082D42D /* CIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FBA21828648F9C0082D42D /* CIImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,7 @@
 		F18DEF2828643D4200C11D5F /* IBInspectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBInspectable.swift; sourceTree = "<group>"; };
 		F18DEF2B2864408900C11D5F /* MainCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCVC.swift; sourceTree = "<group>"; };
 		F18DEF2C2864408900C11D5F /* MainCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCVC.xib; sourceTree = "<group>"; };
+		F18DEF30286464E900C11D5F /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
 		F1E8875928635A1E00ED8584 /* MilestoneImagePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MilestoneImagePicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1E8875C28635A1E00ED8584 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1E8875E28635A1E00ED8584 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -44,6 +47,7 @@
 		F1E8876528635A2000ED8584 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F1E8876828635A2000ED8584 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F1E8876A28635A2000ED8584 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1FBA21828648F9C0082D42D /* CIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIImage.swift; sourceTree = "<group>"; };
 		F3CD0E9B062204AC30964F59 /* Pods_MilestoneImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MilestoneImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -65,7 +69,6 @@
 				C860A1CCB0A3C6C62BEE59E8 /* Pods-MilestoneImagePicker.debug.xcconfig */,
 				4BAEB1C3103386351EBC04FE /* Pods-MilestoneImagePicker.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -107,6 +110,7 @@
 			children = (
 				F18DEF2628643CAF00C11D5F /* HexColor.swift */,
 				F18DEF2828643D4200C11D5F /* IBInspectable.swift */,
+				F1FBA21828648F9C0082D42D /* CIImage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -118,6 +122,14 @@
 				F18DEF2C2864408900C11D5F /* MainCVC.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		F18DEF2F2864640800C11D5F /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				F18DEF30286464E900C11D5F /* FiltersViewController.swift */,
+			);
+			path = Filters;
 			sourceTree = "<group>";
 		};
 		F1E8875028635A1D00ED8584 = {
@@ -141,6 +153,7 @@
 		F1E8875B28635A1E00ED8584 /* MilestoneImagePicker */ = {
 			isa = PBXGroup;
 			children = (
+				F18DEF2F2864640800C11D5F /* Filters */,
 				F18DEF2528643CA200C11D5F /* Extensions */,
 				F18DEF1B28643BAA00C11D5F /* Fonts */,
 				F18DEF1A28643BA300C11D5F /* Main */,
@@ -270,12 +283,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F18DEF31286464E900C11D5F /* FiltersViewController.swift in Sources */,
 				F1E8876128635A1E00ED8584 /* ViewController.swift in Sources */,
 				F18DEF2D2864408900C11D5F /* MainCVC.swift in Sources */,
 				F18DEF2928643D4200C11D5F /* IBInspectable.swift in Sources */,
 				F18DEF2728643CAF00C11D5F /* HexColor.swift in Sources */,
 				F1E8875D28635A1E00ED8584 /* AppDelegate.swift in Sources */,
 				F1E8875F28635A1E00ED8584 /* SceneDelegate.swift in Sources */,
+				F1FBA21928648F9C0082D42D /* CIImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
