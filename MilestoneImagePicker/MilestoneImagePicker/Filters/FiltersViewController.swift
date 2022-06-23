@@ -13,6 +13,8 @@ class FiltersViewController: UIViewController {
     enum FilterType {
         case blur
         case reduction
+        case toneCurve
+        case motion
     }
     
     // MARK: - UI Elements
@@ -20,11 +22,19 @@ class FiltersViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var backButton: UIButton!
     
-    @IBOutlet weak var contrastSlider: UISlider!
+    
     @IBOutlet weak var constrastValueLabel: UILabel!
+    @IBOutlet weak var contrastSlider: UISlider!
     
     @IBOutlet weak var reductionValueLabel: UILabel!
     @IBOutlet weak var reductionSlider: UISlider!
+    
+    
+    @IBOutlet weak var toneCurveValueLabel: UILabel!
+    @IBOutlet weak var toneCurveSlider: UISlider!
+    
+    @IBOutlet weak var motionValueLabel: UILabel!
+    @IBOutlet weak var motionSlider: UISlider!
     
     // MARK: - Variables
     
@@ -49,19 +59,20 @@ class FiltersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        sliderSelectors()
-        imageFilter(filterType: filterType)
+        
+        contrastSlider.addTarget(self, action: #selector(blurEffectSlider), for: .valueChanged)
+        reductionSlider.addTarget(self, action: #selector(reductionEffectSlider), for: .valueChanged)
+        motionSlider.addTarget(self, action: #selector(motionEffectSlider), for: .valueChanged)
         
         imageView.image = image
         beginImage = CIImage(image: imageView.image!)
+        imageFilter(filterType: filterType)
     }
     
     // MARK: - Functions
     
     private func sliderSelectors() {
         
-        contrastSlider.addTarget(self, action: #selector(blurEffectSlider), for: .valueChanged)
-        reductionSlider.addTarget(self, action: #selector(reductionEffectSlider), for: .valueChanged)
     }
     
     
@@ -84,8 +95,22 @@ class FiltersViewController: UIViewController {
             let cgimg = context.createCGImage(output!, from: output!.extent)
             let processImage = UIImage(cgImage: cgimg!)
             imageView.image = processImage
+            
+        case .toneCurve:
+            let filter = CIFilter.addLinearToSRGBToneCurve(inputImage: beginImage!)
+            let output = filter!.outputImage
+            let cgimg = context.createCGImage(output!, from: output!.extent)
+            let processImage = UIImage(cgImage: cgimg!)
+            imageView.image = processImage
+            
+        case .motion:
+            
+            let filter = CIFilter.addMotionBlur(inputImage: self.beginImage!, inputRadius: NSNumber(value:self.motionSlider.value), inputAngle: NSNumber(value: self.motionSlider.value))
+            let output = filter!.outputImage
+            let cgimg = self.context.createCGImage(output!, from: output!.extent)
+            let processImage = UIImage(cgImage: cgimg!)
+            self.imageView.image = processImage
         }
-        
     }
     
     // MARK: - UISlider change value
@@ -99,6 +124,10 @@ class FiltersViewController: UIViewController {
     
     @objc func reductionEffectSlider(_: UISlider) {
         imageFilter(filterType: .reduction)
+    }
+    
+    @objc func motionEffectSlider(_: UISlider) {
+        imageFilter(filterType: .motion)
     }
     
     // MARK: - IBAction

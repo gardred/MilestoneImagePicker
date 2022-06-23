@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     
     // MARK: - Variables
     private var images = [PHAsset]()
+    
     // MARK: - Lifecycle
     
     override func viewWillAppear(_ animated: Bool) {

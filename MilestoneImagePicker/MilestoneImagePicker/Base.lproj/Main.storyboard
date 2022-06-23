@@ -156,6 +156,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RcZ-5s-2WF">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                <color key="backgroundColor" systemColor="labelColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="tKW-GQ-8Sv"/>
+                                </constraints>
+                            </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wm2-wa-4L2">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                                 <subviews>
@@ -168,14 +175,6 @@
                                                     <constraint firstAttribute="height" constant="345" id="tVB-Zw-QHm"/>
                                                 </constraints>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OgK-sE-5md">
-                                                <rect key="frame" x="20" y="40" width="67" height="31"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                                <connections>
-                                                    <action selector="backButtonAction:" destination="18I-rW-KWh" eventType="touchUpInside" id="e7q-xd-cEo"/>
-                                                </connections>
-                                            </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MYa-hK-vBp">
                                                 <rect key="frame" x="0.0" y="475" width="375" height="325"/>
                                                 <subviews>
@@ -223,7 +222,7 @@
                                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="MCY-fH-Pab">
+                                                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="MCY-fH-Pab">
                                                                 <rect key="frame" x="6" y="16" width="331" height="30"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             </slider>
@@ -252,7 +251,7 @@
                                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="IkC-4H-k1x">
+                                                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="IkC-4H-k1x">
                                                                 <rect key="frame" x="6" y="16" width="331" height="30"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             </slider>
@@ -281,7 +280,7 @@
                                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ds5-XB-k8V">
+                                                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ds5-XB-k8V">
                                                                 <rect key="frame" x="6" y="16" width="331" height="30"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             </slider>
@@ -320,11 +319,9 @@
                                             <constraint firstAttribute="trailing" secondItem="MYa-hK-vBp" secondAttribute="trailing" id="NuD-Ld-28J"/>
                                             <constraint firstAttribute="trailing" secondItem="zp6-Jt-8qc" secondAttribute="trailing" constant="16" id="RV1-oW-N2z"/>
                                             <constraint firstItem="zp6-Jt-8qc" firstAttribute="leading" secondItem="sZI-6v-I8Q" secondAttribute="leading" constant="16" id="T1y-Vc-23h"/>
-                                            <constraint firstItem="OgK-sE-5md" firstAttribute="leading" secondItem="sZI-6v-I8Q" secondAttribute="leading" constant="20" id="WDq-ww-gB7"/>
                                             <constraint firstAttribute="bottom" secondItem="MYa-hK-vBp" secondAttribute="bottom" id="gy1-v8-R7B"/>
                                             <constraint firstItem="zp6-Jt-8qc" firstAttribute="top" secondItem="sZI-6v-I8Q" secondAttribute="top" constant="100" id="tWM-A0-ckg"/>
                                             <constraint firstItem="MYa-hK-vBp" firstAttribute="leading" secondItem="sZI-6v-I8Q" secondAttribute="leading" id="vM9-bc-EsT"/>
-                                            <constraint firstItem="OgK-sE-5md" firstAttribute="top" secondItem="sZI-6v-I8Q" secondAttribute="top" constant="40" id="xDe-Vl-Y76"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -341,7 +338,10 @@
                         <viewLayoutGuide key="safeArea" id="afM-KT-97U"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="RcZ-5s-2WF" firstAttribute="trailing" secondItem="afM-KT-97U" secondAttribute="trailing" id="Ful-qU-dUF"/>
                             <constraint firstItem="wm2-wa-4L2" firstAttribute="top" secondItem="TKz-nd-PPS" secondAttribute="top" id="Fz0-e6-qvh"/>
+                            <constraint firstItem="RcZ-5s-2WF" firstAttribute="leading" secondItem="afM-KT-97U" secondAttribute="leading" id="G6k-VF-qYh"/>
+                            <constraint firstItem="RcZ-5s-2WF" firstAttribute="top" secondItem="afM-KT-97U" secondAttribute="top" id="GKF-XD-fPW"/>
                             <constraint firstItem="wm2-wa-4L2" firstAttribute="bottom" secondItem="afM-KT-97U" secondAttribute="bottom" id="NqQ-MM-iRb"/>
                             <constraint firstAttribute="trailing" secondItem="wm2-wa-4L2" secondAttribute="trailing" id="gOy-Gg-Nbh"/>
                             <constraint firstItem="wm2-wa-4L2" firstAttribute="leading" secondItem="TKz-nd-PPS" secondAttribute="leading" id="h4a-5P-9vx"/>
@@ -349,12 +349,15 @@
                     </view>
                     <size key="freeformSize" width="375" height="800"/>
                     <connections>
-                        <outlet property="backButton" destination="OgK-sE-5md" id="6JU-Nu-HMR"/>
                         <outlet property="constrastValueLabel" destination="Yq6-t9-Afy" id="5xF-qs-1RM"/>
                         <outlet property="contrastSlider" destination="Hsv-ck-jNr" id="PmJ-2H-mGj"/>
                         <outlet property="imageView" destination="zp6-Jt-8qc" id="DpR-G4-v1N"/>
+                        <outlet property="motionSlider" destination="Ds5-XB-k8V" id="dBv-nx-KEn"/>
+                        <outlet property="motionValueLabel" destination="RXH-7h-ADP" id="fHr-Zr-IUi"/>
                         <outlet property="reductionSlider" destination="MCY-fH-Pab" id="BvY-en-WE0"/>
                         <outlet property="reductionValueLabel" destination="9W2-D8-24Z" id="llF-08-nCx"/>
+                        <outlet property="toneCurveSlider" destination="IkC-4H-k1x" id="L2S-oV-DmS"/>
+                        <outlet property="toneCurveValueLabel" destination="0eK-0c-ZSc" id="ns6-RV-FYt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p79-Ye-wvj" sceneMemberID="firstResponder"/>
