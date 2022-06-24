@@ -15,7 +15,7 @@ class MainCVC: UICollectionViewCell {
     // MARK: UI Elements
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var checkBox: M13Checkbox!
-    
+    var checkBoxStateChecked: (() -> Void)?
     // MARK: - Lifecycle
     
     override func awakeFromNib() {
@@ -36,10 +36,16 @@ class MainCVC: UICollectionViewCell {
     
     // Action when checkbox is selected
     @IBAction func changeCheckBoxState(_ sender: Any) {
-        if checkBox.checkState == .checked {
-            NotificationCenter.default.post(name: NSNotification.Name("unhide"), object: nil)
-        } else {
+        
+        switch checkBox.checkState {
+            
+        case .unchecked:
             NotificationCenter.default.post(name: NSNotification.Name("hide"), object: nil)
+        case .checked:
+            NotificationCenter.default.post(name: NSNotification.Name("unhide"), object: nil)
+            checkBoxStateChecked?()
+        case .mixed:
+            break
         }
     }
 }

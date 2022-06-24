@@ -20,8 +20,15 @@ class ViewController: UIViewController {
     
     // MARK: - Variables
     private var images = [PHAsset]()
+    private var pictureIndex: PHAsset?
+    private let manager = PHImageManager.default()
+    private var shareVc: UIActivityViewController?
     
     // MARK: - Lifecycle
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -39,12 +46,16 @@ class ViewController: UIViewController {
         configureUI()
         configureCollectionView()
         uploadImages()
-        
+        notifications()
+    }
+    
+    // MARK: - Functions
+    
+    private func notifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.checkBoxIsSelected), name: NSNotification.Name("unhide"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.checkBoxIsDeselected), name: NSNotification.Name("hide"), object: nil)
     }
     
-    // MARK: - Functions
     private func configureUI() {
         
         cameraButton.layer.cornerRadius = cameraButton.frame.height / 2
@@ -67,13 +78,21 @@ class ViewController: UIViewController {
     private func uploadImages() {
         
         PHPhotoLibrary.requestAuthorization { [weak self] status in
+            guard let self = self else { return }
             if status == .authorized {
                 let images = PHAsset.fetchAssets(with: PHAssetMediaType.image, options: nil)
                 images.enumerateObjects { object, _, _ in
-                    self?.images.append(object)
+                    self.images.append(object)
                     DispatchQueue.main.async {
-                        self?.photosCollectionView.reloadData()
+                        self.photosCollectionView.reloadData()
                     }
+                }
+            } else {
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Error", message: "Access was not granted", preferredStyle: .alert)
+                    let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+                    alert.addAction(cancel)
+                    self.present(alert, animated: true)
                 }
             }
         }
@@ -117,8 +136,18 @@ class ViewController: UIViewController {
     
     @IBAction func shareButtonAction(_ sender: Any) {
         
-        let shareVc = UIActivityViewController(activityItems: [], applicationActivities: nil)
-        present(shareVc, animated: true)
+        guard let asset = pictureIndex else { return }
+        
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.manager.requestImage(for: asset, targetSize: CGSize(width: 82, height: 82), contentMode: .aspectFill, options: nil) { image, _ in
+                self.shareVc = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+            }
+            
+            DispatchQueue.main.async {
+                self.present(self.shareVc!, animated: true)
+            }
+        }
+        
     }
     
     @IBAction func cameraButtonAction(_ sender: Any) {
@@ -139,6 +168,12 @@ class ViewController: UIViewController {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController (withIdentifier: "FiltersViewController") as! FiltersViewController
+        
+        guard let asset = pictureIndex else { return }
+        
+        manager.requestImage(for: asset, targetSize: CGSize(width: view.frame.width, height: view.frame.height), contentMode: .aspectFill, options: nil) { image, _ in
+            controller.image = image
+        }
         navigationController?.pushViewController(controller, animated: true)
     }
 }
@@ -154,44 +189,26 @@ extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCVC.identifier, for: indexPath) as! MainCVC
         
-        let asset = self.images[indexPath.row]
-        let manager = PHImageManager.default()
+        let asset = images[indexPath.row]
         
-        manager.requestImage(for: asset, targetSize: CGSize(width: cell.frame.width, height: cell.frame.height - 20), contentMode: .aspectFill, options: nil) { image, _ in
-            
-            DispatchQueue.main.async {
-                cell.imageView.image = image
-            }
+        manager.requestImage(for: asset, targetSize: CGSize(width: 50, height: 50), contentMode: .aspectFill, options: nil) { image, _ in
+            cell.imageView.image = image
         }
         
+        cell.checkBoxStateChecked = {
+            self.pictureIndex = asset
+        }
+
         return cell
     }
 }
 
-// MARK: - UICollectionView Delegate
+// MARK: UICollectionView FlowLayout
 
-extension ViewController: UICollectionViewDelegate {
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController (withIdentifier: "FiltersViewController") as! FiltersViewController
-        
-        let asset = self.images[indexPath.row]
-        let manager = PHImageManager.default()
-        
-        manager.requestImage(for: asset, targetSize: CGSize(width: 82, height: 82), contentMode: .aspectFill, options: nil) { image, _ in
-            controller.image = image
-        }
-        navigationController?.pushViewController(controller, animated: true)
-    }
-}
-
-    // MARK: UICollectionView FlowLayout
 extension ViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 82.0, height: 82.0)
+        return CGSize(width: 82, height: 82)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
