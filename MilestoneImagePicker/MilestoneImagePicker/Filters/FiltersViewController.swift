@@ -22,6 +22,7 @@ class FiltersViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var showOriginalButton: UIButton!
+    @IBOutlet weak var redoChangesButton: UIButton!
     
     @IBOutlet weak var constrastValueLabel: UILabel!
     @IBOutlet weak var contrastSlider: UISlider!
@@ -42,7 +43,10 @@ class FiltersViewController: UIViewController {
     private var beginImage:CIImage?
     private var context = CIContext(options:nil)
     private var filterType: FilterType = .blur
-    
+    private var contrastValue = 0
+    private var reductionValue = 0
+    private var toneCurveValue = 0
+    private var motionValue = 0
     // MARK: - Lifecycle
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -84,9 +88,28 @@ class FiltersViewController: UIViewController {
         beginImage = CIImage(image: image)
     }
     
+    private func applyFilters(_ filter: CIFilter?) {
+        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
+            guard let self = self else { return }
+            
+            if let filter = filter {
+                let output = filter.outputImage
+                if let output = output {
+                    let cgImage = self.context.createCGImage(output, from: output.extent)
+                    if let cgImage = cgImage {
+                        let processImage = UIImage(cgImage: cgImage)
+                        DispatchQueue.main.async {
+                            self.imageView.image = processImage
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     // MARK: - Image filters
     
-    private func imageFilter(filterType: FilterType){
+    private func imageFilter(filterType: FilterType) {
         guard let beginImage = beginImage else { return }
         
         switch filterType {
@@ -94,65 +117,24 @@ class FiltersViewController: UIViewController {
         case .blur:
             
             let filter = CIFilter.addBoxBlur(inputImage: beginImage, inputRadius: NSNumber(value: contrastSlider.value))
-            
-            DispatchQueue.global(qos: .userInteractive).async { [weak self] in
-                guard let self = self else { return }
-                
-                let output = filter!.outputImage
-                let cgimg = self.context.createCGImage(output!, from: output!.extent)
-                let processImage = UIImage(cgImage: cgimg!)
-                
-                DispatchQueue.main.async {
-                    self.imageView.image = processImage
-                }
-            }
+            applyFilters(filter)
             
         case .reduction:
             
             let filter = CIFilter.addNoiseReduction(inputImage: beginImage, inputNoiseLevel: NSNumber(value: reductionSlider.value), inputSharpness: NSNumber(value:reductionSlider.value))
-            
-            DispatchQueue.global(qos: .userInteractive).async { [weak self] in
-                guard let self = self else { return }
-                let output = filter!.outputImage
-                let cgimg = self.context.createCGImage(output!, from: output!.extent)
-                let processImage = UIImage(cgImage: cgimg!)
-                
-                DispatchQueue.main.async {
-                    self.imageView.image = processImage
-                }
-            }
+            applyFilters(filter)
             
         case .toneCurve:
             
             let imageCenter = CIVector(x: imageView.center.x, y: imageView.center.y)
             let filter = CIFilter.addZoomBlur(inputImage: beginImage, inputAmount: NSNumber(value:toneCurveSlider.value), inputCenter: imageCenter)
-            DispatchQueue.global(qos: .userInteractive).async {
-                let output = filter!.outputImage
-                let cgimg = self.context.createCGImage(output!, from: output!.extent)
-                let processImage = UIImage(cgImage: cgimg!)
-                
-                DispatchQueue.main.async {
-                    self.imageView.image = processImage
-                }
-            }
-            
-            
+            applyFilters(filter)
             
         case .motion:
             
             let filter = CIFilter.addMotionBlur(inputImage: beginImage, inputRadius: NSNumber(value:self.motionSlider.value), inputAngle: NSNumber(value: self.motionSlider.value))
+            applyFilters(filter)
             
-            DispatchQueue.global(qos: .userInteractive).async { [weak self] in
-                guard let self = self else { return }
-                
-                let output = filter!.outputImage
-                let cgimg = self.context.createCGImage(output!, from: output!.extent)
-                let processImage = UIImage(cgImage: cgimg!)
-                
-                DispatchQueue.main.async {
-                    self.imageView.image = processImage
-                }
-            }
         }
     }
     
@@ -160,21 +142,29 @@ class FiltersViewController: UIViewController {
     
     @objc func blurEffectSlider(_: UISlider){
         constrastValueLabel.text = "\(Int(contrastSlider.value))"
+        contrastValue = Int(contrastSlider.value)
+        print(contrastValue)
         imageFilter(filterType: .blur)
     }
     
     @objc func reductionEffectSlider(_: UISlider) {
         reductionValueLabel.text = "\(Int(reductionSlider.value))"
+        reductionValue = 0
+        reductionValue = Int(reductionSlider.value)
         imageFilter(filterType: .reduction)
     }
     
     @objc func motionEffectSlider(_: UISlider) {
         motionValueLabel.text = "\(Int(motionSlider.value))"
+        motionValue = 0
+        motionValue = Int(motionSlider.value)
         imageFilter(filterType: .motion)
     }
     
     @objc func toneCurveEffectSlider(_: UISlider) {
         toneCurveValueLabel.text = "\(Int(toneCurveSlider.value))"
+        toneCurveValue = 0
+        toneCurveValue = Int(toneCurveSlider.value)
         imageFilter(filterType: .toneCurve)
     }
     
@@ -194,8 +184,25 @@ class FiltersViewController: UIViewController {
     }
     
     // MARK: - IBAction
+    
+    @IBAction func redoPreviousChangeAction(_ sender: Any) {
+        if contrastValue > 0 {
+            contrastSlider.value = Float(contrastValue)
+            constrastValueLabel.text = "\(contrastValue)"
+        } else if toneCurveValue > 0 {
+            toneCurveSlider.value = Float(toneCurveValue)
+            toneCurveValueLabel.text = "\(toneCurveValue)"
+        } else if motionValue > 0 {
+            motionSlider.value = Float(motionValue)
+            motionValueLabel.text = "\(motionValue)"
+        } else if reductionValue > 0 {
+            reductionSlider.value = Float(reductionValue)
+            reductionValueLabel.text = "\(reductionValue)"
+        }
+    }
+    
     @IBAction func removePreviousChangeAction(_ sender: Any) {
-       
+        
         if contrastSlider.value > 0 {
             contrastSlider.value = 0
             constrastValueLabel.text = "\(Int(contrastSlider.value))"
@@ -214,6 +221,8 @@ class FiltersViewController: UIViewController {
             imageView.image = image
         }
     }
+    
+    
     
     @IBAction func showOriginalAction(_ sender: Any) {
         imageView.image = image

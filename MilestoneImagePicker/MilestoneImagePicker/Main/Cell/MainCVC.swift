@@ -14,7 +14,8 @@ class MainCVC: UICollectionViewCell {
     
     // MARK: UI Elements
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var checkBox: M13Checkbox!
+    
+    @IBOutlet weak var selectButton: UIButton!
     var checkBoxStateChecked: (() -> Void)?
     // MARK: - Lifecycle
     
@@ -22,7 +23,6 @@ class MainCVC: UICollectionViewCell {
         super.awakeFromNib()
         
         layer.cornerRadius = 10
-        checkBox.boxType = .circle
         
         NotificationCenter.default.addObserver(self, selector: #selector(uncheckedState), name: NSNotification.Name("checkBox"), object: nil)
     }
@@ -31,21 +31,30 @@ class MainCVC: UICollectionViewCell {
     
     // Action when cancel button was clicked
     @objc func uncheckedState() {
-        checkBox.checkState = .unchecked
+        selectButton.isSelected = false
+        selectButton.tintColor = .systemGray
+        layer.borderWidth = 0
     }
     
-    // Action when checkbox is selected
-    @IBAction func changeCheckBoxState(_ sender: Any) {
+    @IBAction func selectButtonAction(_ sender: Any) {
         
-        switch checkBox.checkState {
+        if selectButton.isSelected == false{
             
-        case .unchecked:
-            NotificationCenter.default.post(name: NSNotification.Name("hide"), object: nil)
-        case .checked:
+            selectButton.isSelected = true
+            selectButton.tintColor = .link
+            
+            layer.borderWidth = 1
+//            layer.borderColor = .init(red: 44, green: 138, blue: 241, alpha: 1)
+            
             NotificationCenter.default.post(name: NSNotification.Name("unhide"), object: nil)
             checkBoxStateChecked?()
-        case .mixed:
-            break
+            
+        } else {
+            selectButton.isSelected = false
+            selectButton.tintColor = .systemGray
+            NotificationCenter.default.post(name: NSNotification.Name("hide"), object: nil)
+            layer.borderWidth = 0
         }
     }
+    
 }

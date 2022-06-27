@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     private var pictureIndex: PHAsset?
     private let manager = PHImageManager.default()
     private var shareVc: UIActivityViewController?
-    
+    private var asset: PHAsset?
     // MARK: - Lifecycle
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -116,6 +116,21 @@ class ViewController: UIViewController {
         }
     }
     
+    private func lastPhotoDate(_ label: UILabel) {
+        let assets = PHAsset.fetchAssets(with: .image, options: nil)
+        
+        for i in 0..<assets.count {
+            asset = assets[i] as? PHAsset
+            let creationDate = asset?.creationDate
+            
+            if let creationDate = creationDate {
+                let dateFormatterPrint = DateFormatter()
+                dateFormatterPrint.dateFormat = "dd MMM,yyyy"
+                label.text = "\(dateFormatterPrint.string(from: creationDate))"
+            }
+        }
+    }
+    
     @objc public func checkBoxIsSelected() {
         
         editButton.isHidden = false
@@ -198,8 +213,20 @@ extension ViewController: UICollectionViewDataSource {
         cell.checkBoxStateChecked = {
             self.pictureIndex = asset
         }
-
+        
         return cell
+    }
+}
+
+// MARK: - UICollectionView Delegate
+
+extension ViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderCRV", for: indexPath) as! HeaderCRV
+        view.numberOfPhotos.text = "\(self.images.count)"
+        lastPhotoDate(view.dateLabel)
+        
+        return view
     }
 }
 
@@ -229,7 +256,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        self.dismiss(animated: true)
+     
+              dismiss(animated: true, completion:nil)
     }
 }

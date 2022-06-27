@@ -20,34 +20,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="82" height="82"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </imageView>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="os9-9W-dtI" customClass="M13Checkbox" customModule="M13Checkbox">
-                        <rect key="frame" x="4" y="4" width="16" height="16"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="16" id="P4d-2B-BMN"/>
-                            <constraint firstAttribute="height" constant="16" id="nZE-5Z-xLY"/>
-                        </constraints>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S9V-iK-oHi">
+                        <rect key="frame" x="4" y="4" width="20" height="22"/>
+                        <color key="tintColor" red="0.59607843137254901" green="0.59607843137254901" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" image="circle" catalog="system"/>
+                        <state key="selected" image="checkmark.circle.fill" catalog="system"/>
                         <connections>
-                            <action selector="changeCheckBoxState:" destination="gTV-IL-0wX" eventType="valueChanged" id="40L-C5-dHh"/>
+                            <action selector="selectButtonAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="EUs-8R-bwb"/>
                         </connections>
-                    </view>
+                    </button>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="bgq-8o-Sds" secondAttribute="bottom" id="9g9-Fq-qdd"/>
+                <constraint firstItem="S9V-iK-oHi" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="4" id="C5q-YV-3FJ"/>
+                <constraint firstItem="S9V-iK-oHi" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="HRF-fi-44s"/>
                 <constraint firstItem="bgq-8o-Sds" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="R9W-ap-rQP"/>
                 <constraint firstItem="bgq-8o-Sds" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="f8F-aG-mfw"/>
-                <constraint firstItem="os9-9W-dtI" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="iMT-TE-8ne"/>
                 <constraint firstAttribute="trailing" secondItem="bgq-8o-Sds" secondAttribute="trailing" id="j6E-ln-v7D"/>
-                <constraint firstItem="os9-9W-dtI" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="4" id="vVu-7r-Hbm"/>
             </constraints>
             <size key="customSize" width="101" height="92"/>
             <connections>
-                <outlet property="checkBox" destination="os9-9W-dtI" id="dXQ-fc-hqW"/>
                 <outlet property="imageView" destination="bgq-8o-Sds" id="kRS-F7-j2a"/>
+                <outlet property="selectButton" destination="S9V-iK-oHi" id="XL5-Zu-30g"/>
             </connections>
             <point key="canvasLocation" x="173.91304347826087" y="110.49107142857143"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="circle" catalog="system" width="128" height="121"/>
+    </resources>
 </document>
