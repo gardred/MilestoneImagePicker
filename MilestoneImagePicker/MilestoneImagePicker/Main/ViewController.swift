@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var photosCollectionView: UICollectionView!
+    @IBOutlet weak var bottomView: UIView!
     
     // MARK: - Variables
     private var images = [PHAsset]()
@@ -57,7 +58,7 @@ class ViewController: UIViewController {
     }
     
     private func configureUI() {
-        
+        bottomView.backgroundColor = .black
         cameraButton.layer.cornerRadius = cameraButton.frame.height / 2
         cameraButton.layer.masksToBounds = true
         

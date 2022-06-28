@@ -24,6 +24,8 @@ class FiltersViewController: UIViewController {
     @IBOutlet weak var showOriginalButton: UIButton!
     @IBOutlet weak var redoChangesButton: UIButton!
     
+    @IBOutlet weak var sildersView: UIView!
+    @IBOutlet weak var navigationView: UIView!
     @IBOutlet weak var constrastValueLabel: UILabel!
     @IBOutlet weak var contrastSlider: UISlider!
     
@@ -35,7 +37,8 @@ class FiltersViewController: UIViewController {
     
     @IBOutlet weak var motionValueLabel: UILabel!
     @IBOutlet weak var motionSlider: UISlider!
-    
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var scrollBackgroundView: UIView!
     // MARK: - Variables
     
     public var image: UIImage?
@@ -43,6 +46,7 @@ class FiltersViewController: UIViewController {
     private var beginImage:CIImage?
     private var context = CIContext(options:nil)
     private var filterType: FilterType = .blur
+    
     private var contrastValue = 0
     private var reductionValue = 0
     private var toneCurveValue = 0
@@ -65,15 +69,23 @@ class FiltersViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+      
+        configureUI()
         sliderSelectors()
-        
+      
         imageView.image = image
         showPicture()
         imageFilter(filterType: filterType)
     }
     
     // MARK: - Functions
+    
+    private func configureUI() {
+        navigationView.backgroundColor = .black
+        sildersView.backgroundColor = .black
+        scrollView.backgroundColor = .black
+        view.backgroundColor = .black
+    }
     
     private func sliderSelectors() {
         
