@@ -19,26 +19,26 @@ class FiltersViewController: UIViewController {
     
     // MARK: - UI Elements
     
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var showOriginalButton: UIButton!
-    @IBOutlet weak var redoChangesButton: UIButton!
+    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var backButton: UIButton!
+    @IBOutlet private weak var showOriginalButton: UIButton!
+    @IBOutlet private weak var redoChangesButton: UIButton!
     
-    @IBOutlet weak var sildersView: UIView!
-    @IBOutlet weak var navigationView: UIView!
-    @IBOutlet weak var constrastValueLabel: UILabel!
-    @IBOutlet weak var contrastSlider: UISlider!
+    @IBOutlet private weak var sildersView: UIView!
+    @IBOutlet private weak var navigationView: UIView!
+    @IBOutlet private weak var constrastValueLabel: UILabel!
+    @IBOutlet private weak var contrastSlider: UISlider!
     
-    @IBOutlet weak var reductionValueLabel: UILabel!
-    @IBOutlet weak var reductionSlider: UISlider!
+    @IBOutlet private weak var reductionValueLabel: UILabel!
+    @IBOutlet private weak var reductionSlider: UISlider!
     
-    @IBOutlet weak var toneCurveValueLabel: UILabel!
-    @IBOutlet weak var toneCurveSlider: UISlider!
+    @IBOutlet private weak var toneCurveValueLabel: UILabel!
+    @IBOutlet private weak var toneCurveSlider: UISlider!
     
-    @IBOutlet weak var motionValueLabel: UILabel!
-    @IBOutlet weak var motionSlider: UISlider!
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var scrollBackgroundView: UIView!
+    @IBOutlet private weak var motionValueLabel: UILabel!
+    @IBOutlet private weak var motionSlider: UISlider!
+    @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet private weak var scrollBackgroundView: UIView!
     // MARK: - Variables
     
     public var image: UIImage?
@@ -152,35 +152,35 @@ class FiltersViewController: UIViewController {
     
     // MARK: - UISlider change value
     
-    @objc func blurEffectSlider(_: UISlider){
+    @objc private func blurEffectSlider(_: UISlider){
         constrastValueLabel.text = "\(Int(contrastSlider.value))"
         contrastValue = Int(contrastSlider.value)
         print(contrastValue)
         imageFilter(filterType: .blur)
     }
     
-    @objc func reductionEffectSlider(_: UISlider) {
+    @objc private func reductionEffectSlider(_: UISlider) {
         reductionValueLabel.text = "\(Int(reductionSlider.value))"
         reductionValue = 0
         reductionValue = Int(reductionSlider.value)
         imageFilter(filterType: .reduction)
     }
     
-    @objc func motionEffectSlider(_: UISlider) {
+    @objc private func motionEffectSlider(_: UISlider) {
         motionValueLabel.text = "\(Int(motionSlider.value))"
         motionValue = 0
         motionValue = Int(motionSlider.value)
         imageFilter(filterType: .motion)
     }
     
-    @objc func toneCurveEffectSlider(_: UISlider) {
+    @objc private func toneCurveEffectSlider(_: UISlider) {
         toneCurveValueLabel.text = "\(Int(toneCurveSlider.value))"
         toneCurveValue = 0
         toneCurveValue = Int(toneCurveSlider.value)
         imageFilter(filterType: .toneCurve)
     }
     
-    @objc func savePhoto(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+    @objc private func savePhoto(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         if let error = error {
             let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
             let cancel = UIAlertAction(title: "Cancel", style: .cancel)
@@ -197,7 +197,7 @@ class FiltersViewController: UIViewController {
     
     // MARK: - IBAction
     
-    @IBAction func redoPreviousChangeAction(_ sender: Any) {
+    @IBAction private func redoPreviousChangeAction(_ sender: Any) {
         if contrastValue > 0 {
             contrastSlider.value = Float(contrastValue)
             constrastValueLabel.text = "\(contrastValue)"
@@ -213,7 +213,7 @@ class FiltersViewController: UIViewController {
         }
     }
     
-    @IBAction func removePreviousChangeAction(_ sender: Any) {
+    @IBAction private func removePreviousChangeAction(_ sender: Any) {
         
         if contrastSlider.value > 0 {
             contrastSlider.value = 0
@@ -234,24 +234,22 @@ class FiltersViewController: UIViewController {
         }
     }
     
-    
-    
-    @IBAction func showOriginalAction(_ sender: Any) {
+    @IBAction private func showOriginalAction(_ sender: Any) {
         imageView.image = image
     }
     
-    @IBAction func shareAction(_ sender: Any) {
+    @IBAction private func shareAction(_ sender: Any) {
         guard let image = imageView.image else { return }
         let shareVc = UIActivityViewController(activityItems: [image], applicationActivities: nil)
         self.present(shareVc, animated: true)
     }
     
-    @IBAction func saveAction(_ sender: Any) {
+    @IBAction private func saveAction(_ sender: Any) {
         guard let image = imageView.image else { return }
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(savePhoto(_:didFinishSavingWithError:contextInfo:)), nil)
     }
     
-    @IBAction func backButtonAction(_ sender: Any) {
+    @IBAction private func backButtonAction(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
 }

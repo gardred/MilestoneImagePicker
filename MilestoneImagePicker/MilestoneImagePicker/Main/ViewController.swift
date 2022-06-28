@@ -12,19 +12,19 @@ class ViewController: UIViewController {
     
     // MARK: - UI Elements
     
-    @IBOutlet weak var shareWithButton: UIButton!
-    @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var editButton: UIButton!
-    @IBOutlet weak var cameraButton: UIButton!
-    @IBOutlet weak var photosCollectionView: UICollectionView!
-    @IBOutlet weak var bottomView: UIView!
+    @IBOutlet private weak var shareWithButton: UIButton!
+    @IBOutlet private weak var cancelButton: UIButton!
+    @IBOutlet private weak var editButton: UIButton!
+    @IBOutlet private weak var cameraButton: UIButton!
+    @IBOutlet private weak var photosCollectionView: UICollectionView!
+    @IBOutlet private weak var bottomView: UIView!
     
     // MARK: - Variables
     private var images = [PHAsset]()
     private var pictureIndex: PHAsset?
     private let manager = PHImageManager.default()
     private var shareVc: UIActivityViewController?
-    private var asset: PHAsset?
+    private var selectedAsset: PHAsset?
     // MARK: - Lifecycle
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -47,15 +47,9 @@ class ViewController: UIViewController {
         configureUI()
         configureCollectionView()
         uploadImages()
-        notifications()
     }
     
     // MARK: - Functions
-    
-    private func notifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(self.checkBoxIsSelected), name: NSNotification.Name("unhide"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.checkBoxIsDeselected), name: NSNotification.Name("hide"), object: nil)
-    }
     
     private func configureUI() {
         bottomView.backgroundColor = .black
@@ -67,6 +61,11 @@ class ViewController: UIViewController {
         shareWithButton.isHidden = true
         
         shareWithButton.tintColor = UIColor.white
+    }
+    
+    private func checkButtonsVisibility() {
+        editButton.isHidden = selectedAsset == nil
+        cancelButton.isHidden = selectedAsset == nil
     }
     
     private func configureCollectionView() {
@@ -119,11 +118,11 @@ class ViewController: UIViewController {
     
     private func lastPhotoDate(_ label: UILabel) {
         let assets = PHAsset.fetchAssets(with: .image, options: nil)
-        
+
         for i in 0..<assets.count {
-            asset = assets[i] as? PHAsset
-            let creationDate = asset?.creationDate
-            
+            selectedAsset = assets[i] as? PHAsset
+            let creationDate = selectedAsset?.creationDate
+
             if let creationDate = creationDate {
                 let dateFormatterPrint = DateFormatter()
                 dateFormatterPrint.dateFormat = "dd MMM,yyyy"
@@ -132,25 +131,9 @@ class ViewController: UIViewController {
         }
     }
     
-    @objc public func checkBoxIsSelected() {
-        
-        editButton.isHidden = false
-        cancelButton.isHidden = false
-        shareWithButton.isHidden = false
-        cameraButton.isHidden = true
-    }
-    
-    @objc public func checkBoxIsDeselected() {
-        
-        editButton.isHidden = true
-        cancelButton.isHidden = true
-        shareWithButton.isHidden = true
-        cameraButton.isHidden = false
-    }
-    
     // MARK: - IBAction
     
-    @IBAction func shareButtonAction(_ sender: Any) {
+    @IBAction private func shareButtonAction(_ sender: Any) {
         
         guard let asset = pictureIndex else { return }
         
@@ -166,11 +149,11 @@ class ViewController: UIViewController {
         
     }
     
-    @IBAction func cameraButtonAction(_ sender: Any) {
+    @IBAction private func cameraButtonAction(_ sender: Any) {
         openCamera()
     }
     
-    @IBAction func cancelButtonAction(_ sender: Any) {
+    @IBAction private func cancelButtonAction(_ sender: Any) {
         
         NotificationCenter.default.post(name: NSNotification.Name("checkBox"), object: nil)
         editButton.isHidden = true
@@ -180,10 +163,13 @@ class ViewController: UIViewController {
     }
     
     
-    @IBAction func editButtonAction(_ sender: Any) {
+    @IBAction private func editButtonAction(_ sender: Any) {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController (withIdentifier: "FiltersViewController") as! FiltersViewController
+        
+        guard let controller = storyboard.instantiateViewController (withIdentifier: "FiltersViewController") as? FiltersViewController else {
+            return
+        }
         
         guard let asset = pictureIndex else { return }
         
@@ -204,15 +190,21 @@ extension ViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCVC.identifier, for: indexPath) as! MainCVC
-        
         let asset = images[indexPath.row]
+       
+        cell.setup(isSelected: selectedAsset == asset)
         
         manager.requestImage(for: asset, targetSize: CGSize(width: 50, height: 50), contentMode: .aspectFill, options: nil) { image, _ in
             cell.imageView.image = image
         }
         
-        cell.checkBoxStateChecked = {
-            self.pictureIndex = asset
+        cell.checkBoxStateChecked = { [weak self] in
+            self?.pictureIndex = asset
+            self?.selectedAsset = self?.selectedAsset == asset ? nil : asset
+            self?.photosCollectionView.reloadData()
+            self?.checkButtonsVisibility()
+            cell.layer.borderWidth = 1
+            cell.layer.borderColor = UIColor.link.cgColor
         }
         
         return cell
@@ -222,7 +214,9 @@ extension ViewController: UICollectionViewDataSource {
 // MARK: - UICollectionView Delegate
 
 extension ViewController: UICollectionViewDelegate {
+   
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
         let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderCRV", for: indexPath) as! HeaderCRV
         view.numberOfPhotos.text = "\(self.images.count)"
         lastPhotoDate(view.dateLabel)

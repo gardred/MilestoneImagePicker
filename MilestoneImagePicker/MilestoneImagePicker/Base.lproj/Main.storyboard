@@ -58,6 +58,7 @@
                                     <constraints>
                                         <constraint firstItem="aFf-UP-FrT" firstAttribute="top" secondItem="SVb-e0-LeU" secondAttribute="topMargin" constant="7" id="3tN-sg-Dgy"/>
                                         <constraint firstItem="Web-qm-08i" firstAttribute="top" secondItem="SVb-e0-LeU" secondAttribute="topMargin" constant="7" id="Cpc-lc-yuf"/>
+                                        <constraint firstItem="Web-qm-08i" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aFf-UP-FrT" secondAttribute="trailing" constant="8" symbolic="YES" id="NLT-9T-0Bl"/>
                                         <constraint firstItem="aFf-UP-FrT" firstAttribute="leading" secondItem="SVb-e0-LeU" secondAttribute="leadingMargin" id="cw6-qn-Ynv"/>
                                         <constraint firstItem="Web-qm-08i" firstAttribute="trailing" secondItem="SVb-e0-LeU" secondAttribute="trailingMargin" id="iA4-1C-HXB"/>
                                     </constraints>
@@ -70,7 +71,7 @@
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="woq-sC-pLO">
                                 <rect key="frame" x="332" y="77" width="21" height="21"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="Vector"/>
+                                <state key="normal" image="shareButton"/>
                                 <connections>
                                     <action selector="shareButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DJW-Rz-fz4"/>
                                 </connections>
@@ -142,7 +143,7 @@
                                     <constraint firstAttribute="height" constant="56" id="vQP-fA-bO6"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="Vector-1"/>
+                                <state key="normal" image="camera"/>
                                 <connections>
                                     <action selector="cameraButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="74V-g1-7mK"/>
                                 </connections>
@@ -345,10 +346,10 @@
                                 </constraints>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wCh-8j-qi4">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="114"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QGb-vK-Nys">
-                                        <rect key="frame" x="20" y="20" width="12.5" height="22"/>
+                                        <rect key="frame" x="20" y="62" width="12.5" height="22"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="chevron.left" catalog="system"/>
@@ -357,7 +358,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JfX-V5-Iko">
-                                        <rect key="frame" x="335" y="20" width="20" height="22"/>
+                                        <rect key="frame" x="335.5" y="62" width="20" height="22"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="checkmark.circle.fill" catalog="system"/>
@@ -366,16 +367,16 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Sc-EM-Xmp">
-                                        <rect key="frame" x="304" y="20" width="21" height="22"/>
+                                        <rect key="frame" x="304.5" y="62" width="21" height="22"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="Vector"/>
+                                        <state key="normal" image="shareButton"/>
                                         <connections>
                                             <action selector="shareAction:" destination="18I-rW-KWh" eventType="touchUpInside" id="FhS-0f-Jgm"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7C0-Br-sdt">
-                                        <rect key="frame" x="190.5" y="15" width="105.5" height="32"/>
+                                        <rect key="frame" x="191" y="52" width="105.5" height="32"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="yoV-84-L5f"/>
@@ -401,7 +402,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W9i-oy-Kqd">
-                                        <rect key="frame" x="130.5" y="20" width="20" height="22"/>
+                                        <rect key="frame" x="131" y="62" width="20" height="22"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="arrow.uturn.backward" catalog="system"/>
@@ -410,7 +411,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="auU-lU-ipj">
-                                        <rect key="frame" x="160.5" y="20" width="20" height="22"/>
+                                        <rect key="frame" x="161" y="62" width="20" height="22"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="arrow.uturn.right" catalog="system"/>
@@ -421,30 +422,30 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="labelColor"/>
                                 <constraints>
-                                    <constraint firstItem="JfX-V5-Iko" firstAttribute="top" secondItem="wCh-8j-qi4" secondAttribute="top" constant="20" id="06X-Lv-6vu"/>
-                                    <constraint firstItem="auU-lU-ipj" firstAttribute="top" secondItem="wCh-8j-qi4" secondAttribute="top" constant="20" id="4zO-yT-J2x"/>
-                                    <constraint firstItem="4Sc-EM-Xmp" firstAttribute="top" secondItem="wCh-8j-qi4" secondAttribute="top" constant="20" id="70c-Do-N9h"/>
+                                    <constraint firstAttribute="bottom" secondItem="W9i-oy-Kqd" secondAttribute="bottom" constant="30" id="2d0-Ia-rX3"/>
+                                    <constraint firstAttribute="bottom" secondItem="4Sc-EM-Xmp" secondAttribute="bottom" constant="30" id="4d5-Kf-uEX"/>
                                     <constraint firstItem="JfX-V5-Iko" firstAttribute="leading" secondItem="4Sc-EM-Xmp" secondAttribute="trailing" constant="10" id="8PI-05-Vqi"/>
-                                    <constraint firstAttribute="trailing" secondItem="JfX-V5-Iko" secondAttribute="trailing" constant="20" id="B0y-Di-fdJ"/>
                                     <constraint firstItem="7C0-Br-sdt" firstAttribute="leading" secondItem="W9i-oy-Kqd" secondAttribute="trailing" constant="40" id="KXc-0Y-pvS"/>
+                                    <constraint firstAttribute="bottom" secondItem="auU-lU-ipj" secondAttribute="bottom" constant="30" id="Kzt-FN-X3H"/>
                                     <constraint firstItem="4Sc-EM-Xmp" firstAttribute="leading" secondItem="7C0-Br-sdt" secondAttribute="trailing" constant="8" symbolic="YES" id="L0X-ut-jct"/>
-                                    <constraint firstItem="QGb-vK-Nys" firstAttribute="top" secondItem="wCh-8j-qi4" secondAttribute="top" constant="20" id="U5h-Y8-VK6"/>
-                                    <constraint firstItem="7C0-Br-sdt" firstAttribute="top" secondItem="wCh-8j-qi4" secondAttribute="top" constant="15" id="apL-yI-9fm"/>
-                                    <constraint firstItem="QGb-vK-Nys" firstAttribute="leading" secondItem="wCh-8j-qi4" secondAttribute="leading" constant="20" id="gpk-4U-679"/>
+                                    <constraint firstAttribute="bottom" secondItem="QGb-vK-Nys" secondAttribute="bottom" constant="30" id="L1I-xf-L6O"/>
+                                    <constraint firstAttribute="height" constant="114" id="c8f-Zy-srm"/>
+                                    <constraint firstAttribute="trailing" secondItem="4Sc-EM-Xmp" secondAttribute="trailing" constant="49.666666666666686" id="ewD-xl-Bdt"/>
+                                    <constraint firstItem="W9i-oy-Kqd" firstAttribute="leading" secondItem="QGb-vK-Nys" secondAttribute="trailing" constant="98.333333333333343" id="hgO-Zh-1zT"/>
+                                    <constraint firstAttribute="bottom" secondItem="JfX-V5-Iko" secondAttribute="bottom" constant="30" id="mI6-NQ-AnK"/>
                                     <constraint firstItem="7C0-Br-sdt" firstAttribute="leading" secondItem="auU-lU-ipj" secondAttribute="trailing" constant="10" id="mbe-Xh-Tp0"/>
-                                    <constraint firstAttribute="height" constant="70" id="oc4-Tx-2QL"/>
-                                    <constraint firstItem="W9i-oy-Kqd" firstAttribute="top" secondItem="wCh-8j-qi4" secondAttribute="top" constant="20" id="qaF-Uv-kv3"/>
+                                    <constraint firstAttribute="bottom" secondItem="7C0-Br-sdt" secondAttribute="bottom" constant="30" id="uU0-bW-9yx"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="afM-KT-97U"/>
                         <color key="backgroundColor" systemColor="labelColor"/>
                         <constraints>
-                            <constraint firstItem="wCh-8j-qi4" firstAttribute="leading" secondItem="afM-KT-97U" secondAttribute="leading" id="6qi-Bw-FDk"/>
-                            <constraint firstItem="wCh-8j-qi4" firstAttribute="top" secondItem="afM-KT-97U" secondAttribute="top" id="9oM-We-chh"/>
                             <constraint firstItem="wm2-wa-4L2" firstAttribute="top" secondItem="TKz-nd-PPS" secondAttribute="top" id="Fz0-e6-qvh"/>
+                            <constraint firstItem="wCh-8j-qi4" firstAttribute="trailing" secondItem="afM-KT-97U" secondAttribute="trailing" id="LLj-Dl-6tI"/>
                             <constraint firstItem="wm2-wa-4L2" firstAttribute="bottom" secondItem="afM-KT-97U" secondAttribute="bottom" id="NqQ-MM-iRb"/>
-                            <constraint firstItem="afM-KT-97U" firstAttribute="trailing" secondItem="wCh-8j-qi4" secondAttribute="trailing" id="cec-Ql-ICc"/>
+                            <constraint firstItem="wCh-8j-qi4" firstAttribute="leading" secondItem="afM-KT-97U" secondAttribute="leading" id="P2s-tZ-kPS"/>
+                            <constraint firstItem="wCh-8j-qi4" firstAttribute="top" secondItem="TKz-nd-PPS" secondAttribute="top" id="RmG-z4-Ic2"/>
                             <constraint firstAttribute="trailing" secondItem="wm2-wa-4L2" secondAttribute="trailing" id="gOy-Gg-Nbh"/>
                             <constraint firstItem="wm2-wa-4L2" firstAttribute="leading" secondItem="TKz-nd-PPS" secondAttribute="leading" id="h4a-5P-9vx"/>
                         </constraints>
@@ -475,12 +476,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Vector" width="21" height="21"/>
-        <image name="Vector-1" width="32" height="29"/>
         <image name="arrow.uturn.backward" catalog="system" width="128" height="112"/>
         <image name="arrow.uturn.right" catalog="system" width="128" height="112"/>
+        <image name="camera" width="32" height="29"/>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
+        <image name="shareButton" width="21" height="21"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

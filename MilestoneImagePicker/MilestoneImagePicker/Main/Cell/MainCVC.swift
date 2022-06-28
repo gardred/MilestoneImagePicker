@@ -14,15 +14,21 @@ class MainCVC: UICollectionViewCell {
     
     // MARK: UI Elements
     @IBOutlet weak var imageView: UIImageView!
-    
     @IBOutlet weak var selectButton: UIButton!
+    
     var checkBoxStateChecked: (() -> Void)?
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        resetViews()
+    }
+    
+    let link = ViewController()
     // MARK: - Lifecycle
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        layer.cornerRadius = 10
         
         NotificationCenter.default.addObserver(self, selector: #selector(uncheckedState), name: NSNotification.Name("checkBox"), object: nil)
     }
@@ -36,25 +42,20 @@ class MainCVC: UICollectionViewCell {
         layer.borderWidth = 0
     }
     
-    @IBAction func selectButtonAction(_ sender: Any) {
-        
-        if selectButton.isSelected == false{
-            
-            selectButton.isSelected = true
-            selectButton.tintColor = .link
-            
-            layer.borderWidth = 1
-//            layer.borderColor = .init(red: 44, green: 138, blue: 241, alpha: 1)
-            
-            NotificationCenter.default.post(name: NSNotification.Name("unhide"), object: nil)
-            checkBoxStateChecked?()
-            
-        } else {
-            selectButton.isSelected = false
-            selectButton.tintColor = .systemGray
-            NotificationCenter.default.post(name: NSNotification.Name("hide"), object: nil)
-            layer.borderWidth = 0
-        }
+    func setup(isSelected: Bool) {
+        selectButton.isSelected = isSelected
+        selectButton.tintColor = isSelected ? .link : .systemGray
     }
     
+    @IBAction private func selectButtonAction(_ sender: UIButton) {
+        checkBoxStateChecked?()
+    }
+    
+    private func resetViews() {
+        imageView.image = nil
+        selectButton.isSelected = false
+        selectButton.tintColor = .systemGray
+        layer.borderWidth = 0
+        layer.borderColor = .none
+    }
 }
